@@ -1,0 +1,39 @@
+<div class="disclaimer">
+  {% if site.theme.show_disclaimer %}
+  <p>
+    本站文章仅代表作者个人观点，与其他单位、组织、机构的立场、策略、观点无关。
+  </p>
+  {% endif %}
+
+  <p>
+    © {{ site.theme.name }}, {{ site.time | date: '%Y'}} &mdash; built with Jekyll using Lagom theme
+  </p>
+</div>
+<div id="scroll_top">返回顶部</div>
+<script type="text/javascript">
+var oScroll = document.getElementById("scroll_top");
+
+var timer = null;
+
+window.onscroll = function (){
+	var oTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+	if(oTop > 800){
+		oScroll.style.display = "block";
+		oScroll.onclick = function (){
+			timer = setInterval(function (){
+				if(oTop <= 0){
+					clearInterval(timer);
+					oScroll.style.display = "none";
+				}
+
+				oTop-=100;
+				document.documentElement.scrollTop = oTop;
+				document.body.scrollTop = oTop;
+			}, 30);
+		};
+	}else if(oTop <= 0){
+		oScroll.style.display = "none";
+	}
+};
+</script>
